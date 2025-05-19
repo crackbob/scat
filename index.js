@@ -74,9 +74,7 @@ buttonContainer.style.flexDirection = 'column-reverse';
 contentArea.appendChild(buttonContainer);
 
 function getVM () {
-    let wpRequire;
-    webpackChunkGUI.push([[Symbol()], {}, function (require) {wpRequire = require}]);
-    return wpRequire(Object.keys(wpRequire.m)[Object.values(wpRequire.m).findIndex(m => m.toString().includes("guiInitialState="))]).guiInitialState.vm;
+   return app._reactRootContainer._internalRoot.current.child.stateNode.store.getState().scratchGui.vm;
 }
 
 buttonContainer.appendChild(createButton('Inject Sprite', () => {
